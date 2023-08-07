@@ -1,1 +1,69 @@
+import java.util.Scanner;
 
+public class CurrencyConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Step 1: Prompt the user to enter the amount to be converted.
+        System.out.print("Enter the amount to be converted: ");
+        double amount = scanner.nextDouble();
+
+        // Step 2: Prompt the user to enter the source currency.
+        System.out.print("Enter the source currency (e.g., USD): ");
+        String sourceCurrency = scanner.next().toUpperCase();
+
+        // Step 3: Prompt the user to enter the target currency.
+        System.out.print("Enter the target currency (e.g., EUR): ");
+        String targetCurrency = scanner.next().toUpperCase();
+
+        // Step 4: Fetch the exchange rate (For simplicity, we are using a predefined factor)
+        double exchangeRate = getExchangeRate(sourceCurrency, targetCurrency);
+
+        if (exchangeRate == 0) {
+            System.out.println("Error: Unsupported currency conversion.");
+        } else {
+            // Step 8: Multiply the amount by the exchange rate to perform the currency conversion.
+            double convertedAmount = amount * exchangeRate;
+
+            // Step 9: Display the converted amount to the user.
+            System.out.println("Converted amount: " + convertedAmount + " " + targetCurrency);
+        }
+
+        scanner.close();
+    }
+
+    // Helper method to fetch the exchange rate (Predefined conversion factors)
+    private static double getExchangeRate(String sourceCurrency, String targetCurrency) {
+        if (sourceCurrency.equals("USD") && targetCurrency.equals("EUR")) {
+            return 0.85; // 1 USD = 0.85 EUR
+        } else if (sourceCurrency.equals("EUR") && targetCurrency.equals("USD")) {
+            return 1.18; // 1 EUR = 1.18 USD
+        } else if (sourceCurrency.equals("USD") && targetCurrency.equals("GBP")) {
+            return 0.73; // 1 USD = 0.73 GBP
+        } else if (sourceCurrency.equals("GBP") && targetCurrency.equals("USD")) {
+            return 1.37; // 1 GBP = 1.37 USD
+        } else if (sourceCurrency.equals("EUR") && targetCurrency.equals("GBP")) {
+            return 0.87; // 1 EUR = 0.87 GBP
+        } else if (sourceCurrency.equals("GBP") && targetCurrency.equals("EUR")) {
+            return 1.15; // 1 GBP = 1.15 EUR
+        } else if (sourceCurrency.equals("USD") && targetCurrency.equals("JPY")) {
+            return 110.63; // 1 USD = 110.63 JPY
+        } else if (sourceCurrency.equals("JPY") && targetCurrency.equals("USD")) {
+            return 0.009; // 1 JPY = 0.009 USD
+        } else if (sourceCurrency.equals("EUR") && targetCurrency.equals("JPY")) {
+            return 130.68; // 1 EUR = 130.68 JPY
+        } else if (sourceCurrency.equals("JPY") && targetCurrency.equals("EUR")) {
+            return 0.0077; // 1 JPY = 0.0077 EUR
+        } else if (sourceCurrency.equals("USD") && targetCurrency.equals("INR")) {
+            return 74.38; // 1 USD = 74.38 INR
+        } else if (sourceCurrency.equals("INR") && targetCurrency.equals("USD")) {
+            return 0.013; // 1 INR = 0.013 USD
+        } else if (sourceCurrency.equals("EUR") && targetCurrency.equals("INR")) {
+            return 87.94; // 1 EUR = 87.94 INR
+        } else if (sourceCurrency.equals("INR") && targetCurrency.equals("EUR")) {
+            return 0.011; // 1 INR = 0.011 EUR
+        }
+
+        return 0; // Unsupported currency conversion
+    }
+}
