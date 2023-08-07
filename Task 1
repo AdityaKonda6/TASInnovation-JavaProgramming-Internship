@@ -1,13 +1,29 @@
-My Task 1, 
-Multiplication Table of any number.
+import java.util.Scanner;
 
-Here are the simplified steps to perform multiplication of any number in Java:-
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Step 1: Prompt the user to enter a number.
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
 
-1. Prompt the user to enter a number. 2. Read and store the number entered by the user.
+        // Step 2: Prompt the user to enter another number to multiply with the first number.
+        System.out.print("Enter the range (up to 10) for multiplication table: ");
+        int range = scanner.nextInt();
 
-3. Prompt the user to enter another number to multiply with the first
-number.
+        // Step 3: Check if the range is above 10 and display an error message.
+        if (range > 10) {
+            System.out.println("Error: Range should be up to 10.");
+        } else {
+            // Step 6: Display the multiplication table
+            System.out.println("Multiplication Table of " + number + " (up to " + range + " multiply):");
+            for (int i = 1; i <= range; i++) {
+                int result = number * i;
+                System.out.println(number + " * " + i + " = " + result);
+            }
+        }
 
-4. Read and store the second number entered by the user.
-
-5. Perform the multiplication of the two numbers. 6. Display the result of the multiplication to the user.
+        scanner.close();
+    }
+}
